@@ -1,5 +1,5 @@
 /**
- * BCA STORE - Conversational & Chat Knowledge Base
+ * BCA STUDY HUB - Conversational & Chat Knowledge Base
  * This file contains human-like responses for greetings and casual interaction.
  */
 
@@ -20,7 +20,7 @@ const CHAT_KNOWLEDGE = {
   "thanks a lot": "My pleasure! 💙",
   "bye": "Bye 👋 Have a wonderful day!",
   "see you later": "See you soon 😊",
-  "developer": "The mastermind behind BCA Store is **Vishal Kumar**. ✨\n\n[Guess who's the genius behind this?](https://real-vishal.netlify.app/) 🚀",
+  "developer": "The mastermind behind BCA STUDY HUB is **Vishal Kumar**. ✨\n\n[Guess who's the genius behind this?](https://real-vishal.netlify.app/) 🚀",
 
   // Personal / AI Identity
   "who are you": "I’m your BCA AI Assistant, created by Vishal Kumar to help you with your studies.",

@@ -1,5 +1,5 @@
 /**
- * BCA STORE - Data Structures (DS) Knowledge Base
+ * BCA STUDY HUB - Data Structures (DS) Knowledge Base
  * Training dataset for the AI Assistant.
  */
 

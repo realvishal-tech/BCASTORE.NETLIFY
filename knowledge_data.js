@@ -1,5 +1,5 @@
 /**
- * BCA STORE - AI Knowledge Base
+ * BCA STUDY HUB - AI Knowledge Base
  * This file contains the training dataset for the AI Assistant.
  * Including Top 1000 Computer Fundamentals Q&A.
  */

@@ -1,6 +1,6 @@
 {
-  "name": "BCA STORE",
-  "short_name": "BCA Store",
+  "name": "BCA STUDY HUB",
+  "short_name": "BCA STUDY HUB",
   "description": "BCA Study Hub for BRABU Students",
   "start_url": "/index.html",
   "display": "standalone",

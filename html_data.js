@@ -1,5 +1,5 @@
 /**
- * BCA STORE - HTML & Web Development Knowledge Base
+ * BCA STUDY HUB - HTML & Web Development Knowledge Base
  * Training dataset for the AI Assistant.
  */
 

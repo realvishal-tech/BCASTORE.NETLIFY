@@ -1,5 +1,5 @@
 /**
- * BCA STORE - Business Communication Knowledge Base
+ * BCA STUDY HUB - Business Communication Knowledge Base
  * Training dataset for the AI Assistant.
  */
 
