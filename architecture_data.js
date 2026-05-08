@@ -1,5 +1,5 @@
 /**
- * BCA STORE - Computer Architecture & Organization Knowledge Base
+ * BCA STUDY HUB - Computer Architecture & Organization Knowledge Base
  * Training dataset for the AI Assistant.
  */
 

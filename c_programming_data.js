@@ -1,5 +1,5 @@
 /**
- * BCA STORE - C Programming Knowledge Base
+ * BCA STUDY HUB - C Programming Knowledge Base
  * Training dataset for the AI Assistant.
  */
 

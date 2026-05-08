@@ -1,5 +1,5 @@
 /**
- * BCA STORE - C Programming Lab & Viva Knowledge Base
+ * BCA STUDY HUB - C Programming Lab & Viva Knowledge Base
  * This file contains practical questions, lab programs, and viva-voce answers.
  */
 

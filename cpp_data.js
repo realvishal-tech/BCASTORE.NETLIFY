@@ -1,5 +1,5 @@
 /**
- * BCA STORE - C++ Programming & OOP Knowledge Base
+ * BCA STUDY HUB - C++ Programming & OOP Knowledge Base
  * Training dataset for the AI Assistant.
  */
 

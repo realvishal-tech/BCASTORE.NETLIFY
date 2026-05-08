@@ -3,7 +3,7 @@ $port = 8080
 $listener = New-Object System.Net.HttpListener
 $listener.Prefixes.Add("http://localhost:$port/")
 $listener.Start()
-Write-Host "BCA STORE running at http://localhost:$port/"
+Write-Host "BCA STUDY HUB running at http://localhost:$port/"
 while ($listener.IsListening) {
     $ctx = $listener.GetContext()
     $req = $ctx.Request

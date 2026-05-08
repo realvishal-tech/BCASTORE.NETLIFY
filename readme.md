@@ -1,4 +1,4 @@
-# BCA STORE — README
+# BCA STUDY HUB — README
 
 ## 🚀 How to Open
 

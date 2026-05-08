@@ -1,5 +1,5 @@
 // ============================================================
-// BCA STORE - script.js  (Complete Rewrite - All Fixed)
+// BCA STUDY HUB - script.js  (Complete Rewrite - All Fixed)
 // ============================================================
 
 // Global Scroll Handlers for UX
@@ -390,7 +390,7 @@ function injectMobileDrawer() {
           </div>
           <div class="drawer-dark-switch" id="drawerDarkSwitch"></div>
         </div>
-        <div class="drawer-version">BCA Store • V2.0 Professional</div>
+        <div class="drawer-version">BCA STUDY HUB • V2.0 Professional</div>
       </div>
     </div>
   `;
@@ -715,7 +715,7 @@ function initHomePage() {
   // Launch Notification
   if (!lsGet('launched_v2', false)) {
     setTimeout(() => {
-      showToast('🚀 Welcome to BCA STORE Professional Edition!', 'success');
+      showToast('🚀 Welcome to BCA STUDY HUB Professional Edition!', 'success');
       lsSet('launched_v2', true);
     }, 2000);
   }
@@ -949,7 +949,7 @@ function initSemesterPage() {
   if (el('semTitle')) el('semTitle').innerHTML = `Semester <span class="gradient-text">${semNum}</span>`;
   if (el('semDesc')) el('semDesc').textContent = (SUBJECTS[semKey]?.length || 0) + ' subjects — Select one to access study materials';
   if (el('semBreadcrumb')) el('semBreadcrumb').textContent = 'Semester ' + semNum;
-  document.title = 'Semester ' + semNum + ' | BCA STORE';
+  document.title = 'Semester ' + semNum + ' | BCA STUDY HUB';
 
   const tabs = el('semTabs');
   if (tabs) tabs.innerHTML = [1, 2, 3, 4, 5, 6].map(n => `<button class="sem-tab${n === semNum ? ' active' : ''}" onclick="location.href='semester.html?sem=${n}'">Semester ${n}</button>`).join('');
@@ -1027,7 +1027,7 @@ function initSubjectPage() {
     return;
   }
 
-  document.title = currentSubject.name + ' | BCA STORE';
+  document.title = currentSubject.name + ' | BCA STUDY HUB';
   const el = id => document.getElementById(id);
   if (el('subjectTitle')) el('subjectTitle').textContent = currentSubject.icon + ' ' + currentSubject.name;
   if (el('subjectCode')) el('subjectCode').textContent = currentCode + ' — Semester ' + currentSemNum;
@@ -3062,15 +3062,15 @@ const BCA_BOT_KNOWLEDGE = {
   "networking": "Network & Security (BCA-504) covers: OSI/TCP-IP models, Transmission, Routing, IPv4/IPv6, Security (DES, AES, RSA), Firewalls, and Cyber Laws (IT Act).",
   "data structure": "Data Structure (BCA-203) covers: Recursion, Sorting (Bubble/Quick/Heap), Searching, Linked Lists, Stacks, Queues, and Binary Search Trees.",
 
-  "who are you": "I am the BCA STORE Assistant! I was built by Vishal to help BRABU students with their BCA journey. I can answer your academic and programming questions based on the latest university syllabus! 🤖",
-  "vishal": "Vishal Kumar is the developer behind BCA STORE. He is a dedicated developer who created this platform to provide premium resources to BCA students.",
-  "bca store": "BCA STORE is a premium platform for BRABU BCA students, providing high-quality notes, solved previous year questions (PYQs), and video lectures.",
+  "who are you": "I am the BCA STUDY HUB Assistant! I was built by Vishal to help BRABU students with their BCA journey. I can answer your academic and programming questions based on the latest university syllabus! 🤖",
+  "vishal": "Vishal Kumar is the developer behind BCA STUDY HUB. He is a dedicated developer who created this platform to provide premium resources to BCA students.",
+  "bca study hub": "BCA STUDY HUB is a premium platform for BRABU BCA students, providing high-quality notes, solved previous year questions (PYQs), and video lectures.",
   "practical": "Practical exams are of 100 marks each (80 External + 20 Internal) and are conducted for subjects like C, Java, Python, and Web Tech."
 };
 
 let isAIChatOpen = false;
 let aiChatHistory = [
-  { role: 'system', content: "You are a helpful and expert AI Assistant for BCA STORE, a study hub for BCA students of BRABU. Your name is 'BCA STORE AI'. Be professional, friendly, and encouraging." }
+  { role: 'system', content: "You are a helpful and expert AI Assistant for BCA STUDY HUB, a study hub for BCA students of BRABU. Your name is 'BCA STUDY HUB AI'. Be professional, friendly, and encouraging." }
 ];
 
 // Global injection
@@ -3083,13 +3083,13 @@ let aiChatHistory = [
         <div class="ai-chat-header">
           <div class="ai-avatar">🤖</div>
           <div class="ai-header-info">
-            <h3>BCA STORE Assistant</h3>
+            <h3>BCA STUDY HUB Assistant</h3>
             <p>Instant Answers Active ⚡</p>
           </div>
         </div>
         <div class="ai-chat-messages" id="aiChatMessages">
           <div class="ai-msg bot">
-            Hi! I'm your BCA STORE Assistant. I can answer your questions about BCA, BRABU exams, and programming instantly! Try asking "What is the exam pattern?" 🚀
+            Hi! I'm your BCA STUDY HUB Assistant. I can answer your questions about BCA, BRABU exams, and programming instantly! Try asking "What is the exam pattern?" 🚀
           </div>
         </div>
         <div class="ai-typing" id="aiTyping">AI is thinking...</div>
@@ -3237,7 +3237,7 @@ function findLocalAnswer(query) {
   
   // PRIORITY: Check for 'developer' mention in any context
   if (q.includes('developer')) {
-    return BCA_BOT_KNOWLEDGE['developer'] || "The mastermind behind BCA Store is **Vishal Kumar**. ✨\n\n[Guess who's the genius behind this?](https://real-vishal.netlify.app/) 🚀";
+    return BCA_BOT_KNOWLEDGE['developer'] || "The mastermind behind BCA STUDY HUB is **Vishal Kumar**. ✨\n\n[Guess who's the genius behind this?](https://real-vishal.netlify.app/) 🚀";
   }
 
   // Try exact match first

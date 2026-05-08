@@ -1,5 +1,5 @@
 /**
- * BCA STORE - MS Office Knowledge Base
+ * BCA STUDY HUB - MS Office Knowledge Base
  * Training dataset for the AI Assistant.
  */
 

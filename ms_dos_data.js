@@ -1,5 +1,5 @@
 /**
- * BCA STORE - MS-DOS Knowledge Base
+ * BCA STUDY HUB - MS-DOS Knowledge Base
  * Training dataset for the AI Assistant.
  */
 
