@@ -227,7 +227,7 @@ function isMatDone(id) {
 }
 
 // ============================================================
-// 4. DARK MODE
+// 4. DARK MODE - OPTIMIZED FOR PERFORMANCE
 // ============================================================
 function initDarkMode() {
   const dark = lsGet('darkMode', false);
@@ -237,9 +237,23 @@ function initDarkMode() {
 }
 function toggleDarkMode() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  const newTheme = isDark ? 'light' : 'dark';
+  
+  // Add theme-switching class to disable transitions
+  document.body.classList.add('theme-switching');
+  
+  // Change theme
+  document.documentElement.setAttribute('data-theme', newTheme);
   lsSet('darkMode', !isDark);
   updateDarkToggle(!isDark);
+  
+  // Remove theme-switching class to re-enable transitions
+  // Using requestAnimationFrame for optimal performance
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.classList.remove('theme-switching');
+    });
+  });
 }
 function updateDarkToggle(isDark) {
   const b = document.getElementById('darkToggle');

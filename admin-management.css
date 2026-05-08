@@ -33,12 +33,18 @@ body {
 
 .mgmt-nav {
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border-color);
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  will-change: background, border-color;
+  transform: translateZ(0);
+}
+@media (max-width: 768px) {
+  .mgmt-nav { backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
 }
 
 .mgmt-nav-container {

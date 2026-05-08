@@ -6,9 +6,13 @@
 .comm-reg-overlay {
   position: fixed; inset: 0; z-index: 3000;
   background: rgba(2, 8, 23, 0.85);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   display: flex; align-items: center; justify-content: center;
   animation: commFadeIn 0.4s ease;
+  will-change: backdrop-filter;
+}
+@media (max-width: 768px) {
+  .comm-reg-overlay { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 }
 .comm-reg-card {
   background: var(--bg-card); border: 1px solid var(--border);
@@ -28,7 +32,8 @@
 .comm-reg-field input, .comm-reg-field select {
   width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border);
   background: var(--bg); color: var(--text); font-size: 0.95rem; font-weight: 500;
-  font-family: inherit; transition: all 0.3s ease; outline: none;
+  font-family: inherit; transition: border-color 0.15s ease, box-shadow 0.15s ease; outline: none;
+  will-change: border-color;
 }
 .comm-reg-field input:focus, .comm-reg-field select:focus {
   border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light);
@@ -37,7 +42,8 @@
   width: 100%; padding: 14px; border: none; border-radius: 14px; cursor: pointer;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: #fff; font-size: 1rem; font-weight: 700; font-family: inherit;
-  transition: all 0.3s ease; margin-top: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease; margin-top: 8px;
+  will-change: transform;
 }
 .comm-reg-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(99,102,241,0.35); }
 
@@ -63,7 +69,8 @@
 .comm-tab {
   padding: 10px 24px; border-radius: 99px; border: 1px solid var(--border);
   background: var(--bg-card); color: var(--text-muted); font-weight: 700;
-  font-size: 0.88rem; cursor: pointer; transition: all 0.3s ease; font-family: inherit;
+  font-size: 0.88rem; cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease; font-family: inherit;
+  will-change: color, border-color, background-color;
 }
 .comm-tab:hover { color: var(--primary); border-color: var(--primary); background: var(--primary-light); }
 .comm-tab.active {
@@ -80,22 +87,25 @@
 .comm-doubt-toolbar input, .comm-doubt-toolbar select {
   padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border);
   background: var(--bg-card); color: var(--text); font-size: 0.88rem; font-family: inherit; outline: none;
-  transition: border-color 0.3s;
+  transition: border-color 0.15s ease;
+  will-change: border-color;
 }
 .comm-doubt-toolbar input { flex: 1; min-width: 180px; }
 .comm-doubt-toolbar input:focus, .comm-doubt-toolbar select:focus { border-color: var(--primary); }
 .comm-post-btn {
   padding: 10px 20px; border-radius: 12px; border: none; cursor: pointer;
   background: var(--primary); color: #fff; font-weight: 700; font-size: 0.88rem;
-  font-family: inherit; transition: all 0.3s ease; white-space: nowrap;
+  font-family: inherit; transition: background-color 0.15s ease, transform 0.15s ease; white-space: nowrap;
+  will-change: background-color, transform;
 }
 .comm-post-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
 /* Doubt Card */
 .comm-doubt-card {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-  padding: 20px; margin-bottom: 14px; transition: all 0.3s ease;
+  padding: 20px; margin-bottom: 14px; transition: border-color 0.15s ease, box-shadow 0.15s ease;
   animation: commSlideUp 0.4s ease backwards;
+  will-change: border-color;
 }
 .comm-doubt-card:hover { border-color: var(--primary); box-shadow: 0 8px 30px rgba(99,102,241,0.1); }
 .comm-doubt-card.pinned { border-color: var(--accent); background: rgba(245,158,11,0.03); }

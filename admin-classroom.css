@@ -15,7 +15,8 @@
   --admin-danger: #ef4444;
   --admin-warning: #fbbf24;
   
-  --admin-transition: 0.3s ease;
+  --admin-transition: 0.15s ease;
+  --admin-transition-slow: 0.2s ease;
 }
 
 /* ===================================
@@ -29,11 +30,17 @@
   right: 0;
   height: 70px;
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(100, 116, 139, 0.2);
   z-index: 1000;
   display: flex;
   align-items: center;
+  will-change: background, border-color;
+  transform: translateZ(0);
+}
+@media (max-width: 768px) {
+  .admin-nav { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 }
 
 .admin-nav-container {
