@@ -42,7 +42,6 @@ function checkAdminAuthentication() {
  * Initialize admin panel
  */
 function initializeAdmin() {
-  console.log('⚙️ Admin Dashboard Initialized');
   
   // Load all data
   loadAllData();
@@ -308,7 +307,6 @@ function editClass(classId) {
  */
 function editRecording(recordingId) {
   // Implementation for editing recordings
-  console.log('Edit recording:', recordingId);
   showAdminNotification('Recording edit feature coming soon', 'info');
 }
 
@@ -534,7 +532,6 @@ function updateAnalyticsCards() {
  */
 async function saveClassToFirebase(classData, mode) {
   // Firebase implementation will go here
-  console.log('Saving to Firebase:', classData, mode);
   
   // Example:
   // try {
@@ -544,7 +541,6 @@ async function saveClassToFirebase(classData, mode) {
   //     await db.collection('classes').doc(classData.id).update(classData);
   //   }
   // } catch (error) {
-  //   console.error('Firebase error:', error);
   //   showAdminNotification('Error saving to database', 'error');
   // }
 }
@@ -554,7 +550,6 @@ async function saveClassToFirebase(classData, mode) {
  */
 async function deleteClassFromFirebase(classId) {
   // Firebase implementation will go here
-  console.log('Deleting from Firebase:', classId);
 }
 
 // ===================================
@@ -586,5 +581,3 @@ function handleLogout() {
     window.location.href = 'admin-login.html';
   }
 }
-
-console.log('✅ Admin Dashboard Ready | Total Classes: ' + ADMIN_STATE.classes.length);

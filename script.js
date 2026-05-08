@@ -39,7 +39,7 @@ try {
     const app = firebase.apps && firebase.apps.length > 0 ? firebase.app() : firebase.initializeApp(firebaseConfig);
     db = firebase.database(app);
   }
-} catch (e) { console.warn("Firebase fallback:", e.message); }
+} catch (e) { /* Firebase fallback */ }
 
 // ============================================================
 // 2. SUBJECT DATA
@@ -1413,7 +1413,7 @@ function navigateBookmark(encoded) {
         window.open(data.link, '_blank');
       }
     }
-  } catch (e) { console.warn('Navigate bookmark error:', e); }
+  } catch (e) { /* Navigation error - graceful fallback */ }
 }
 
 function removeSingleBookmark(key) {

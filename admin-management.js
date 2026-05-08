@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==================== INITIALIZATION ====================
 
 function initializeManagement() {
-  console.log('⚙️ Admin Management Initialized');
   
   // Load from localStorage or use default data
   loadFromLocalStorage();
@@ -601,7 +600,6 @@ function exportData() {
   showNotification('✅ Data exported successfully!', 'success');
 }
 
-// ==================== CONSOLE HELPERS ====================
+// ==================== EXPORT FUNCTIONS ====================
 
 window.exportData = exportData;
-window.debugMgmt = () => console.log('Management State:', MGMT_STATE);

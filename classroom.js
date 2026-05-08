@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
  * Initialize classroom environment
  */
 function initializeClassroom() {
-  console.log('🎓 Classroom System Initialized');
   
   // Check if user is logged in
   const userName = localStorage.getItem('userName');
@@ -739,7 +738,6 @@ function initializeFirebase() {
  */
 function saveClassEnrollment(studentData, classId) {
   // Firebase write logic here
-  console.log('Enrollment saved:', studentData, classId);
 }
 
 /**
@@ -747,7 +745,4 @@ function saveClassEnrollment(studentData, classId) {
  */
 function logAttendance(studentData, classId, joinTime, leaveTime) {
   // Firebase write logic here
-  console.log('Attendance logged:', studentData, classId, joinTime, leaveTime);
 }
-
-console.log('✅ Classroom System Ready | Live Classes: ' + CLASSROOM_DATA.liveClasses.length + ' | Upcoming: ' + CLASSROOM_DATA.upcomingClasses.length + ' | Recorded: ' + CLASSROOM_DATA.recordedClasses.length);

@@ -405,5 +405,3 @@ function markMultipleStudents(sessionId, studentIds, status) {
 // Initialize with sample data
 ATTENDANCE_STATE.teachers = Object.values(TEACHERS);
 ATTENDANCE_STATE.studentProfiles = STUDENT_PROFILES;
-
-console.log('✅ Attendance System Ready | Teachers: ' + Object.keys(TEACHERS).length + ' | Students: ' + STUDENT_PROFILES.length);

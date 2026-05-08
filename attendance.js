@@ -812,7 +812,6 @@ function loadSessionFromStorage() {
     try {
       attendanceUI.currentSession = JSON.parse(stored);
     } catch (e) {
-      console.error('Error loading session from storage', e);
     }
   }
 }
