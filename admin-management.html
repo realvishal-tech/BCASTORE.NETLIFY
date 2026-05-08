@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin Management - Teachers, Subjects, Semesters" />
+  
+  <title>Admin Management | BCA STORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin-management.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="mgmt-nav">
+    <div class="mgmt-nav-container">
+      <a href="admin-classroom.html" class="mgmt-nav-logo">
+        <span class="mgmt-nav-icon">⚙️</span>
+        <span>Admin Management</span>
+      </a>
+      <div class="mgmt-nav-menu">
+        <a href="admin-classroom.html" class="mgmt-nav-link">← Back to Dashboard</a>
+        <a href="#" class="mgmt-nav-link" id="userProfileNav">👤</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="mgmt-main">
+    <div class="mgmt-container">
+      <!-- Sidebar -->
+      <aside class="mgmt-sidebar">
+        <div class="mgmt-menu">
+          <button class="mgmt-menu-item active" data-tab="teachers">
+            <span class="mgmt-menu-icon">👨‍🏫</span>
+            <span>Teachers Management</span>
+          </button>
+          <button class="mgmt-menu-item" data-tab="subjects">
+            <span class="mgmt-menu-icon">📚</span>
+            <span>Subjects Management</span>
+          </button>
+          <button class="mgmt-menu-item" data-tab="semesters">
+            <span class="mgmt-menu-icon">📅</span>
+            <span>Semesters Management</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Content Area -->
+      <div class="mgmt-content">
+        <!-- ========== TEACHERS MANAGEMENT ========== -->
+        <section id="teachers-tab" class="mgmt-tab active">
+          <div class="mgmt-header">
+            <h1>👨‍🏫 Teachers Management</h1>
+            <button class="btn btn-primary" id="addTeacherBtn">+ Add New Teacher</button>
+          </div>
+
+          <!-- Teachers List -->
+          <div class="mgmt-card">
+            <div class="mgmt-card-header">
+              <h3>All Teachers</h3>
+              <input type="text" id="teacherSearchInput" placeholder="Search teachers...">
+            </div>
+            <div id="teachersListContainer" class="mgmt-list">
+              <!-- Teachers will be rendered here -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== SUBJECTS MANAGEMENT ========== -->
+        <section id="subjects-tab" class="mgmt-tab">
+          <div class="mgmt-header">
+            <h1>📚 Subjects Management</h1>
+            <button class="btn btn-primary" id="addSubjectBtn">+ Add New Subject</button>
+          </div>
+
+          <!-- Subjects List -->
+          <div class="mgmt-card">
+            <div class="mgmt-card-header">
+              <h3>All Subjects/Classes</h3>
+              <input type="text" id="subjectSearchInput" placeholder="Search subjects...">
+            </div>
+            <div id="subjectsListContainer" class="mgmt-list">
+              <!-- Subjects will be rendered here -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== SEMESTERS MANAGEMENT ========== -->
+        <section id="semesters-tab" class="mgmt-tab">
+          <div class="mgmt-header">
+            <h1>📅 Semesters Management</h1>
+            <button class="btn btn-primary" id="addSemesterBtn">+ Add New Semester</button>
+          </div>
+
+          <!-- Semesters List -->
+          <div class="mgmt-card">
+            <div class="mgmt-card-header">
+              <h3>All Semesters</h3>
+              <input type="text" id="semesterSearchInput" placeholder="Search semesters...">
+            </div>
+            <div id="semestersListContainer" class="mgmt-list">
+              <!-- Semesters will be rendered here -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== MODALS ========== -->
+
+  <!-- Add/Edit Teacher Modal -->
+  <div id="teacherModal" class="mgmt-modal-overlay">
+    <div class="mgmt-modal">
+      <div class="mgmt-modal-header">
+        <h2 id="teacherModalTitle">Add New Teacher</h2>
+        <button class="mgmt-modal-close" onclick="closeTeacherModal()">✕</button>
+      </div>
+
+      <form id="teacherForm" class="mgmt-form">
+        <div class="form-group">
+          <label>Teacher Name *</label>
+          <input type="text" id="teacherName" placeholder="Prof. Name" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Department *</label>
+            <input type="text" id="teacherDept" placeholder="Computer Science" required>
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="teacherEmail" placeholder="email@university.edu" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" id="teacherPhone" placeholder="+91-xxxx-xxxxxx">
+          </div>
+          <div class="form-group">
+            <label>Experience (years)</label>
+            <input type="number" id="teacherExperience" placeholder="5" min="0">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Qualification</label>
+          <input type="text" id="teacherQualification" placeholder="M.Tech in Computer Science">
+        </div>
+
+        <div class="form-group">
+          <label>Assigned Subjects (comma-separated)</label>
+          <input type="text" id="teacherSubjects" placeholder="Data Structures, Algorithms, DBMS">
+          <small>Separate multiple subjects with commas</small>
+        </div>
+
+        <div class="mgmt-form-actions">
+          <button type="button" class="btn btn-outline" onclick="closeTeacherModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Teacher</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add/Edit Subject Modal -->
+  <div id="subjectModal" class="mgmt-modal-overlay">
+    <div class="mgmt-modal">
+      <div class="mgmt-modal-header">
+        <h2 id="subjectModalTitle">Add New Subject</h2>
+        <button class="mgmt-modal-close" onclick="closeSubjectModal()">✕</button>
+      </div>
+
+      <form id="subjectForm" class="mgmt-form">
+        <div class="form-group">
+          <label>Subject Name *</label>
+          <input type="text" id="subjectName" placeholder="Data Structures" required>
+        </div>
+
+        <div class="form-group">
+          <label>Subject Code *</label>
+          <input type="text" id="subjectCode" placeholder="CS-301" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Semester</label>
+            <select id="subjectSemester">
+              <option value="">-- Select Semester --</option>
+              <option value="I">Semester I</option>
+              <option value="II">Semester II</option>
+              <option value="III">Semester III</option>
+              <option value="IV">Semester IV</option>
+              <option value="V">Semester V</option>
+              <option value="VI">Semester VI</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Credits</label>
+            <input type="number" id="subjectCredits" placeholder="4" min="1" max="6">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="subjectDescription" placeholder="Brief description of the subject" rows="3"></textarea>
+        </div>
+
+        <div class="mgmt-form-actions">
+          <button type="button" class="btn btn-outline" onclick="closeSubjectModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Subject</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add/Edit Semester Modal -->
+  <div id="semesterModal" class="mgmt-modal-overlay">
+    <div class="mgmt-modal">
+      <div class="mgmt-modal-header">
+        <h2 id="semesterModalTitle">Add New Semester</h2>
+        <button class="mgmt-modal-close" onclick="closeSemesterModal()">✕</button>
+      </div>
+
+      <form id="semesterForm" class="mgmt-form">
+        <div class="form-group">
+          <label>Semester Name *</label>
+          <input type="text" id="semesterName" placeholder="Semester I" required>
+        </div>
+
+        <div class="form-group">
+          <label>Semester Number *</label>
+          <select id="semesterNumber" required>
+            <option value="">-- Select Semester --</option>
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="VI">VI</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" id="semesterStartDate">
+          </div>
+          <div class="form-group">
+            <label>End Date</label>
+            <input type="date" id="semesterEndDate">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Academic Year</label>
+          <input type="text" id="semesterYear" placeholder="2024-2025">
+        </div>
+
+        <div class="form-group">
+          <label>Status</label>
+          <select id="semesterStatus">
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+            <option value="upcoming">Upcoming</option>
+          </select>
+        </div>
+
+        <div class="mgmt-form-actions">
+          <button type="button" class="btn btn-outline" onclick="closeSemesterModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Semester</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirm Delete Modal -->
+  <div id="confirmDeleteModal" class="mgmt-modal-overlay">
+    <div class="mgmt-modal small">
+      <div class="mgmt-modal-header">
+        <h2>Confirm Delete</h2>
+      </div>
+      <div class="mgmt-modal-body">
+        <p>Are you sure you want to delete <strong id="deleteItemName"></strong>?</p>
+        <p style="font-size: 0.9rem; color: #ef4444;">This action cannot be undone.</p>
+      </div>
+      <div class="mgmt-form-actions">
+        <button type="button" class="btn btn-outline" onclick="cancelDelete()">Cancel</button>
+        <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast/Notification -->
+  <div id="mgmtNotification" class="mgmt-notification"></div>
+
+  <!-- Scripts -->
+  <script src="attendance_data.js"></script>
+  <script src="admin-management.js"></script>
+</body>
+</html>
