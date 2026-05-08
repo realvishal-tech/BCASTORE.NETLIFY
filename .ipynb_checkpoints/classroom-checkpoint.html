@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Live Classrooms - Interactive online learning with Google Meet integration on BCA STORE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Live Classrooms | BCA STORE" />
+  <meta property="og:description" content="Join live classes on BCA STORE with integrated Google Meet" />
+  
+  <title>Live Classrooms | BCA STORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="classroom.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="classroom-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-icon">📚</span>
+        <span class="nav-logo-text"><span class="brand-bca">BCA</span> <span class="brand-accent">STORE</span></span>
+      </a>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="classroom.html" class="nav-link active">Live Classes</a>
+        <a href="attendance.html" class="nav-link">📋 Attendance</a>
+        <a href="#" class="nav-link" id="userProfileNav">Profile</a>
+      </div>
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="classroom-main">
+    <!-- Animated Background -->
+    <div class="classroom-bg-orb classroom-orb1"></div>
+    <div class="classroom-bg-orb classroom-orb2"></div>
+    <div class="classroom-bg-orb classroom-orb3"></div>
+
+    <!-- Header Section -->
+    <section class="classroom-hero">
+      <div class="classroom-container">
+        <h1 class="classroom-hero-title">
+          <span class="gradient-text">Live Classrooms</span>
+        </h1>
+        <p class="classroom-hero-subtitle">Interactive online learning with real-time engagement</p>
+        
+        <!-- Quick Stats -->
+        <div class="classroom-stats">
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-content">
+              <div class="stat-number" id="activeStudents">0</div>
+              <div class="stat-label">Students Online</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📺</div>
+            <div class="stat-content">
+              <div class="stat-number" id="classCount">0</div>
+              <div class="stat-label">Live Classes</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-content">
+              <div class="stat-number" id="completedClasses">0</div>
+              <div class="stat-label">Recorded</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Now Section -->
+    <section class="classroom-section">
+      <div class="classroom-container">
+        <div class="section-header">
+          <h2 class="section-title">🔴 Live Now</h2>
+          <p class="section-subtitle">Join the ongoing class</p>
+        </div>
+
+        <div id="liveClassContainer" class="live-class-container">
+          <!-- Live classes will be rendered here -->
+          <div class="empty-state">
+            <div class="empty-icon">📭</div>
+            <h3>No live classes at the moment</h3>
+            <p>Check back soon or view upcoming classes below</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Classes Section -->
+    <section class="classroom-section">
+      <div class="classroom-container">
+        <div class="section-header">
+          <h2 class="section-title">📅 Upcoming Classes</h2>
+          <p class="section-subtitle">Schedule of upcoming sessions</p>
+        </div>
+
+        <!-- Filter & Search -->
+        <div class="classroom-filters">
+          <div class="filter-group">
+            <input 
+              type="text" 
+              id="searchInput" 
+              class="filter-input" 
+              placeholder="Search by subject or teacher..."
+            />
+            <span class="filter-icon">🔍</span>
+          </div>
+          <select id="subjectFilter" class="filter-select">
+            <option value="">All Subjects</option>
+            <option value="data-structures">Data Structures</option>
+            <option value="web-development">Web Development</option>
+            <option value="database">Database Management</option>
+            <option value="oops">Object Oriented Programming</option>
+            <option value="architecture">Computer Architecture</option>
+          </select>
+        </div>
+
+        <!-- Upcoming Classes Grid -->
+        <div id="upcomingClassesContainer" class="upcoming-grid">
+          <!-- Will be populated by JS -->
+          <div class="empty-state">
+            <div class="empty-icon">⏰</div>
+            <h3>Loading upcoming classes...</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recorded Classes Section -->
+    <section class="classroom-section">
+      <div class="classroom-container">
+        <div class="section-header">
+          <h2 class="section-title">🎬 Recorded Classes</h2>
+          <p class="section-subtitle">Watch previous class recordings</p>
+        </div>
+
+        <div id="recordedClassesContainer" class="recorded-grid">
+          <!-- Will be populated by JS -->
+          <div class="empty-state">
+            <div class="empty-icon">🎥</div>
+            <h3>Loading recorded classes...</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Live Class Modal -->
+  <div id="liveClassModal" class="modal">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-content live-class-modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      
+      <div class="live-class-wrapper">
+        <!-- Google Meet Embed -->
+        <div class="meet-container" id="meetContainer">
+          <!-- Google Meet will be embedded here -->
+          <div class="meet-placeholder">
+            <div class="meet-loader">
+              <div class="loader-spinner"></div>
+              <p>Loading classroom...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Class Details Sidebar -->
+        <div class="class-details-sidebar">
+          <div class="details-header">
+            <h3 id="modalClassTitle">Class Title</h3>
+            <span class="live-badge">
+              <span class="live-pulse"></span>
+              LIVE
+            </span>
+          </div>
+
+          <!-- Class Info -->
+          <div class="class-info">
+            <div class="info-item">
+              <span class="info-icon">👨‍🏫</span>
+              <div>
+                <p class="info-label">Teacher</p>
+                <p id="modalTeacherName">Teacher Name</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">📚</span>
+              <div>
+                <p class="info-label">Subject</p>
+                <p id="modalSubject">Subject</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">⏱️</span>
+              <div>
+                <p class="info-label">Duration</p>
+                <p id="modalDuration">--:--</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">👥</span>
+              <div>
+                <p class="info-label">Students Joined</p>
+                <p id="modalStudentsJoined">0</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="details-divider"></div>
+
+          <!-- Topic & Description -->
+          <div class="class-topic">
+            <h4>Today's Topic</h4>
+            <p id="modalTopic">Loading topic...</p>
+          </div>
+
+          <!-- Notes Section -->
+          <div class="notes-section">
+            <h4>Class Notes</h4>
+            <button class="notes-download-btn" id="downloadNotesBtn">
+              <span>📄</span> Download Notes
+            </button>
+          </div>
+
+          <!-- Divider -->
+          <div class="details-divider"></div>
+
+          <!-- Action Buttons -->
+          <div class="class-actions">
+            <button class="action-btn raise-hand-btn" id="raiseHandBtn">
+              <span>✋</span> Raise Hand
+            </button>
+            <button class="action-btn chat-btn" id="chatBtn">
+              <span>💬</span> Chat & Q&A
+            </button>
+            <button class="action-btn leave-btn" id="leaveClassBtn">
+              <span>🚪</span> Leave Class
+            </button>
+          </div>
+
+          <!-- Attendance -->
+          <div class="attendance-indicator">
+            <p>Attendance marked ✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Join Class Modal -->
+  <div id="joinModal" class="modal">
+    <div class="modal-overlay" id="joinModalOverlay"></div>
+    <div class="modal-content join-modal">
+      <button class="modal-close" id="joinModalClose">&times;</button>
+      
+      <div class="join-content">
+        <div class="join-icon">👤</div>
+        <h2>Enter Classroom</h2>
+        <p>Please provide your details to join the class</p>
+
+        <form id="joinForm" class="join-form">
+          <div class="form-group">
+            <label for="studentName">Your Name</label>
+            <input 
+              type="text" 
+              id="studentName" 
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="studentEmail">Email</label>
+            <input 
+              type="email" 
+              id="studentEmail" 
+              placeholder="your@email.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="studentRoll">Roll Number (Optional)</label>
+            <input 
+              type="text" 
+              id="studentRoll" 
+              placeholder="e.g., 001"
+            />
+          </div>
+
+          <button type="submit" class="join-submit-btn">
+            Join Classroom Now
+          </button>
+        </form>
+
+        <p class="join-disclaimer">
+          By joining, you agree to the classroom code of conduct
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="notification" class="notification">
+    <span id="notificationMessage"></span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+  <script src="classroom_data.js"></script>
+  <script src="classroom.js"></script>
+</body>
+</html>

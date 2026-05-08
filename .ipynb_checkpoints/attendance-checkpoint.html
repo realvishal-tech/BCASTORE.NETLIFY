@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Attendance Management - Mark and Track Student Attendance" />
+  
+  <title>Attendance Management | BCA STORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✓</text></svg>">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="attendance.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="attendance-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-icon">✓</span>
+        <span><span class="brand-bca">BCA</span> <span class="brand-accent">STORE</span></span>
+      </a>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="classroom.html" class="nav-link">Classes</a>
+        <a href="attendance.html" class="nav-link active">Attendance</a>
+        <a href="#" class="nav-link" id="userNav">👤</a>
+      </div>
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="attendance-main">
+    <!-- Background -->
+    <div class="att-orb att-orb1"></div>
+    <div class="att-orb att-orb2"></div>
+    <div class="att-orb att-orb3"></div>
+
+    <div class="attendance-container">
+      <!-- Hero Section -->
+      <section class="attendance-hero">
+        <h1 class="hero-title">📋 Attendance Management System</h1>
+        <p class="hero-subtitle">Efficient, transparent, and easy-to-use attendance tracking</p>
+      </section>
+
+      <!-- Tabs for Different Views -->
+      <div class="att-tabs">
+        <button class="att-tab-btn active" data-tab="mark-attendance">
+          ✍️ Mark Attendance
+        </button>
+        <button class="att-tab-btn" data-tab="view-report">
+          📊 View Reports
+        </button>
+        <button class="att-tab-btn" data-tab="student-attendance">
+          👨‍🎓 My Attendance
+        </button>
+        <button class="att-tab-btn" data-tab="teacher-profiles">
+          👨‍🏫 Teachers
+        </button>
+      </div>
+
+      <!-- TAB 1: Mark Attendance (Teacher) -->
+      <section id="mark-attendance" class="att-tab-content active">
+        <div class="section-header">
+          <h2>Mark Attendance</h2>
+          <p>Quick and easy attendance marking</p>
+        </div>
+
+        <!-- Class Selection -->
+        <div class="att-card">
+          <div class="card-header">
+            <h3>📚 Select Class & Start Session</h3>
+          </div>
+
+          <form id="sessionForm" class="att-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Select Class</label>
+                <select id="selectClass" required>
+                  <option value="">-- Choose Class --</option>
+                  <option value="ds-001">Data Structures (III Sem)</option>
+                  <option value="web-001">Web Development (III Sem)</option>
+                  <option value="db-001">Database Management (III Sem)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Select Teacher</label>
+                <select id="selectTeacher" required>
+                  <option value="">-- Choose Teacher --</option>
+                  <optgroup label="Available Teachers">
+                    <option value="prof-001">Prof. Rajesh Kumar</option>
+                    <option value="prof-002">Prof. Priya Singh</option>
+                    <option value="prof-003">Prof. Anil Verma</option>
+                    <option value="prof-004">Prof. Deepak Sharma</option>
+                    <option value="prof-005">Prof. Neeta Gupta</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Attendance Date</label>
+                <input type="date" id="attendanceDate" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              ▶️ Start Marking Attendance
+            </button>
+          </form>
+        </div>
+
+        <!-- Attendance Grid -->
+        <div id="attendanceGridContainer" style="display: none;">
+          <div class="att-card">
+            <div class="card-header">
+              <h3 id="sessionTitle">Data Structures (III Sem)</h3>
+              <div class="session-info">
+                <span>👨‍🏫 <span id="teacherDisplay">--</span></span>
+                <span>📅 <span id="dateDisplay">--</span></span>
+                <span>👥 <span id="studentCount">0</span> Students</span>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+              <button class="quick-btn" id="markAllPresentBtn">
+                ✅ Mark All Present
+              </button>
+              <button class="quick-btn secondary" id="resetBtn">
+                🔄 Reset
+              </button>
+              <button class="quick-btn success" id="submitBtn">
+                ✓ Submit Attendance
+              </button>
+            </div>
+
+            <!-- Attendance Table -->
+            <div class="att-table-wrapper">
+              <table class="att-table">
+                <thead>
+                  <tr>
+                    <th>Roll No</th>
+                    <th>Student Name</th>
+                    <th>Semester</th>
+                    <th>Status</th>
+                    <th>Check-In Time</th>
+                    <th>Remarks</th>
+                  </tr>
+                </thead>
+                <tbody id="attendanceTableBody">
+                  <!-- Will be populated -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Summary -->
+            <div class="att-summary">
+              <div class="summary-item">
+                <span class="summary-label">✅ Present</span>
+                <span class="summary-value present-count">0</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">❌ Absent</span>
+                <span class="summary-value absent-count">0</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">⏱️ Late</span>
+                <span class="summary-value late-count">0</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">📊 Percentage</span>
+                <span class="summary-value percentage">0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: View Reports -->
+      <section id="view-report" class="att-tab-content">
+        <div class="section-header">
+          <h2>Attendance Reports</h2>
+          <p>View detailed attendance statistics</p>
+        </div>
+
+        <!-- Report Filters -->
+        <div class="att-card">
+          <div class="card-header">
+            <h3>📊 Generate Report</h3>
+          </div>
+
+          <form id="reportForm" class="att-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Class</label>
+                <select id="reportClass">
+                  <option value="">All Classes</option>
+                  <option value="ds-001">Data Structures</option>
+                  <option value="web-001">Web Development</option>
+                  <option value="db-001">Database Management</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Period</label>
+                <select id="reportPeriod">
+                  <option value="month">This Month</option>
+                  <option value="quarter">This Quarter</option>
+                  <option value="semester">This Semester</option>
+                  <option value="custom">Custom Range</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Export As</label>
+                <select id="exportFormat">
+                  <option value="view">View in Browser</option>
+                  <option value="csv">Download CSV</option>
+                  <option value="pdf">Download PDF</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              📄 Generate Report
+            </button>
+          </form>
+        </div>
+
+        <!-- Report Results -->
+        <div id="reportResults" style="display: none;">
+          <div class="att-card">
+            <div class="card-header">
+              <h3>📋 Attendance Report</h3>
+            </div>
+
+            <div class="report-summary">
+              <div class="report-stat">
+                <div class="stat-label">Total Sessions</div>
+                <div class="stat-value" id="totalSessions">0</div>
+              </div>
+              <div class="report-stat">
+                <div class="stat-label">Class Average</div>
+                <div class="stat-value" id="classAverage">0%</div>
+              </div>
+              <div class="report-stat">
+                <div class="stat-label">Highest Attendance</div>
+                <div class="stat-value" id="highestAttendance">--</div>
+              </div>
+              <div class="report-stat">
+                <div class="stat-label">Lowest Attendance</div>
+                <div class="stat-value" id="lowestAttendance">--</div>
+              </div>
+            </div>
+
+            <div class="att-table-wrapper">
+              <table class="att-table">
+                <thead>
+                  <tr>
+                    <th>Roll No</th>
+                    <th>Student Name</th>
+                    <th>Total Classes</th>
+                    <th>Attended</th>
+                    <th>Attendance %</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="reportTableBody">
+                  <!-- Will be populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: Student Attendance View -->
+      <section id="student-attendance" class="att-tab-content">
+        <div class="section-header">
+          <h2>My Attendance</h2>
+          <p>View your attendance record</p>
+        </div>
+
+        <div class="att-card">
+          <div class="card-header">
+            <h3>📊 Attendance Summary</h3>
+          </div>
+
+          <div class="student-stats">
+            <div class="stat-card">
+              <div class="stat-icon">👤</div>
+              <div class="stat-info">
+                <div class="stat-name" id="myName">Loading...</div>
+                <div class="stat-detail">
+                  <span>Roll: <span id="myRoll">--</span></span>
+                  <span>Sem: <span id="mySem">--</span></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card highlight">
+              <div class="stat-value" id="myAttendancePercent">0%</div>
+              <div class="stat-label">Overall Attendance</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-value present" id="myPresent">0</div>
+              <div class="stat-label">Classes Attended</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-value absent" id="myAbsent">0</div>
+              <div class="stat-label">Absent</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">📈</div>
+              <div class="stat-info">
+                <div class="stat-label">Attendance Status</div>
+                <div class="stat-detail" id="myStatus">--</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Attendance History -->
+          <h4 style="margin-top: 2rem; color: #f1f5f9;">Recent Attendance</h4>
+          <div class="att-table-wrapper">
+            <table class="att-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Class/Subject</th>
+                  <th>Teacher</th>
+                  <th>Status</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody id="myAttendanceHistory">
+                <tr>
+                  <td colspan="5" style="text-align: center; padding: 2rem;">No attendance records yet</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: Teacher Profiles -->
+      <section id="teacher-profiles" class="att-tab-content">
+        <div class="section-header">
+          <h2>Faculty Information</h2>
+          <p>View teacher details and contact information</p>
+        </div>
+
+        <div class="teachers-grid" id="teachersGrid">
+          <!-- Will be populated -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modals -->
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content success-modal">
+      <div class="modal-icon">✓</div>
+      <h2>Attendance Submitted Successfully!</h2>
+      <p id="successMessage">Attendance has been recorded.</p>
+      <button class="btn btn-primary" id="closeSuccessBtn">OK</button>
+    </div>
+  </div>
+
+  <!-- Notification -->
+  <div id="notification" class="notification"></div>
+
+  <!-- Scripts -->
+  <script src="attendance_data.js"></script>
+  <script src="attendance.js"></script>
+</body>
+</html>
