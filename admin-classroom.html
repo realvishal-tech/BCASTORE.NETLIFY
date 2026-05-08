@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin Dashboard - Manage Live Classes on BCA STORE" />
+  
+  <title>Admin Dashboard - Live Classes | BCA STORE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin-classroom.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="admin-nav">
+    <div class="admin-nav-container">
+      <a href="index.html" class="admin-nav-logo">
+        <span class="admin-nav-icon">⚙️</span>
+        <span>Admin Panel</span>
+      </a>
+      <div class="admin-nav-menu">
+        <a href="#" class="admin-nav-link active">Dashboard</a>
+        <a href="#" class="admin-nav-link" id="logoutBtn">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="admin-main">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-menu">
+        <div class="menu-section">
+          <p class="menu-section-title">CLASSES</p>
+          <a href="#" class="menu-item active" data-section="live-classes">
+            <span class="menu-icon">📺</span>
+            <span>Live Classes</span>
+          </a>
+          <a href="#" class="menu-item" data-section="upcoming">
+            <span class="menu-icon">📅</span>
+            <span>Upcoming Schedule</span>
+          </a>
+          <a href="#" class="menu-item" data-section="recorded">
+            <span class="menu-icon">🎬</span>
+            <span>Recorded Classes</span>
+          </a>
+        </div>
+
+        <div class="menu-section">
+          <p class="menu-section-title">MANAGEMENT</p>
+          <a href="#" class="menu-item" data-section="teachers">
+            <span class="menu-icon">👨‍🏫</span>
+            <span>Teachers</span>
+          </a>
+          <a href="#" class="menu-item" data-section="students">
+            <span class="menu-icon">👨‍🎓</span>
+            <span>Students</span>
+          </a>
+          <a href="#" class="menu-item" data-section="subjects">
+            <span class="menu-icon">📚</span>
+            <span>Subjects</span>
+          </a>
+        </div>
+
+        <div class="menu-section">
+          <p class="menu-section-title">ANALYTICS</p>
+          <a href="#" class="menu-item" data-section="analytics">
+            <span class="menu-icon">📊</span>
+            <span>Analytics</span>
+          </a>
+          <a href="#" class="menu-item" data-section="reports">
+            <span class="menu-icon">📈</span>
+            <span>Reports</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content Area -->
+    <div class="admin-content">
+      <!-- Live Classes Section -->
+      <section id="live-classes" class="admin-section active">
+        <div class="section-header">
+          <h1>Live Classes Management</h1>
+          <button class="btn btn-primary" id="addLiveClassBtn">+ New Live Class</button>
+        </div>
+
+        <!-- Live Classes Table -->
+        <div class="admin-card">
+          <div class="card-header">
+            <h2>Currently Live</h2>
+            <div class="card-actions">
+              <input type="text" class="filter-input" placeholder="Search classes...">
+            </div>
+          </div>
+          <div id="liveClassesTable" class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Teacher</th>
+                  <th>Subject</th>
+                  <th>Students</th>
+                  <th>Time Remaining</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="liveClassesTbody">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 2rem;">No live classes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Upcoming Classes Section -->
+      <section id="upcoming" class="admin-section">
+        <div class="section-header">
+          <h1>Schedule Upcoming Classes</h1>
+          <button class="btn btn-primary" id="addUpcomingClassBtn">+ Schedule Class</button>
+        </div>
+
+        <div class="admin-card">
+          <div id="upcomingClassesTable" class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Teacher</th>
+                  <th>Subject</th>
+                  <th>Scheduled Date</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="upcomingClassesTbody">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 2rem;">Loading...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recorded Classes Section -->
+      <section id="recorded" class="admin-section">
+        <div class="section-header">
+          <h1>Manage Recorded Classes</h1>
+          <button class="btn btn-primary" id="addRecordedClassBtn">+ Add Recording</button>
+        </div>
+
+        <div class="recorded-grid" id="recordedClassesGrid">
+          <div style="text-align: center; padding: 2rem; grid-column: 1/-1;">Loading...</div>
+        </div>
+      </section>
+
+      <!-- Teachers Section -->
+      <section id="teachers" class="admin-section">
+        <div class="section-header">
+          <h1>Teachers Management</h1>
+          <button class="btn btn-primary" id="addTeacherBtn">+ Add Teacher</button>
+        </div>
+
+        <div class="admin-card">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Classes</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="teachersTableBody">
+              <tr>
+                <td colspan="5" style="text-align: center; padding: 2rem;">Loading teachers...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Students Section -->
+      <section id="students" class="admin-section">
+        <div class="section-header">
+          <h1>Students Management</h1>
+        </div>
+
+        <div class="admin-card">
+          <div class="card-stats">
+            <div class="stat">
+              <div class="stat-value" id="totalStudents">0</div>
+              <div class="stat-label">Total Students</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="activeStudents">0</div>
+              <div class="stat-label">Active Today</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="attendanceRate">0%</div>
+              <div class="stat-label">Avg Attendance</div>
+            </div>
+          </div>
+
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Roll Number</th>
+                <th>Email</th>
+                <th>Classes Joined</th>
+                <th>Attendance</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTableBody">
+              <tr>
+                <td colspan="6" style="text-align: center; padding: 2rem;">Loading students...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Analytics Section -->
+      <section id="analytics" class="admin-section">
+        <div class="section-header">
+          <h1>Analytics Dashboard</h1>
+        </div>
+
+        <div class="analytics-grid">
+          <div class="analytics-card">
+            <div class="analytics-header">Total Sessions</div>
+            <div class="analytics-value" id="totalSessions">0</div>
+            <div class="analytics-change">+12% this week</div>
+          </div>
+          <div class="analytics-card">
+            <div class="analytics-header">Total Students Enrolled</div>
+            <div class="analytics-value" id="totalEnrolled">0</div>
+            <div class="analytics-change">+8% this month</div>
+          </div>
+          <div class="analytics-card">
+            <div class="analytics-header">Avg Class Duration</div>
+            <div class="analytics-value" id="avgDuration">--</div>
+            <div class="analytics-change">45 min average</div>
+          </div>
+          <div class="analytics-card">
+            <div class="analytics-header">Completion Rate</div>
+            <div class="analytics-value" id="completionRate">95%</div>
+            <div class="analytics-change">Excellent engagement</div>
+          </div>
+        </div>
+
+        <!-- Charts would go here -->
+        <div class="admin-card" style="margin-top: 2rem;">
+          <div class="card-header">
+            <h2>Class Attendance Trends</h2>
+          </div>
+          <div style="text-align: center; padding: 3rem; color: #cbd5e1;">
+            📊 Chart visualization would be integrated with Chart.js or similar library
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Add/Edit Class Modal -->
+  <div id="classModal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content admin-modal">
+      <button class="modal-close">&times;</button>
+      
+      <div class="modal-header">
+        <h2 id="modalTitle">Add New Live Class</h2>
+      </div>
+
+      <form id="classForm" class="admin-form">
+        <div class="form-section">
+          <h3>Class Information</h3>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Class Title</label>
+              <input type="text" id="classTitle" placeholder="e.g., Data Structures Fundamentals" required>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select id="classSubject" required>
+                <option value="">Select Subject</option>
+                <option value="data-structures">Data Structures</option>
+                <option value="web-development">Web Development</option>
+                <option value="database">Database Management</option>
+                <option value="oops">Object Oriented Programming</option>
+                <option value="architecture">Computer Architecture</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Teacher Name</label>
+              <input type="text" id="classTeacher" placeholder="Prof. Name" required>
+            </div>
+            <div class="form-group">
+              <label>Teacher Email</label>
+              <input type="email" id="classTeacherEmail" placeholder="teacher@email.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Class Description</label>
+            <textarea id="classDescription" placeholder="What will students learn in this class?" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Schedule & Google Meet</h3>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Start Date & Time</label>
+              <input type="datetime-local" id="classStartTime" required>
+            </div>
+            <div class="form-group">
+              <label>End Date & Time</label>
+              <input type="datetime-local" id="classEndTime" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Google Meet Link</label>
+            <input type="url" id="classMeetLink" placeholder="https://meet.google.com/your-meeting-link" required>
+            <small style="color: #94a3b8; margin-top: 0.5rem; display: block;">
+              📌 Paste your Google Meet link here. Students will join directly from the website.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Class Content</h3>
+          
+          <div class="form-group">
+            <label>Today's Topic</label>
+            <input type="text" id="classTopic" placeholder="e.g., Binary Search Trees and Balancing">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Notes File (PDF)</label>
+              <input type="file" id="classNotesFile" accept=".pdf">
+            </div>
+            <div class="form-group">
+              <label>Or Notes URL</label>
+              <input type="url" id="classNotesUrl" placeholder="https://drive.google.com/file/...">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelClassBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Class</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content confirm-modal">
+      <div class="confirm-icon">⚠️</div>
+      <h2>Are you sure?</h2>
+      <p id="deleteMessage">This action cannot be undone.</p>
+      
+      <div class="confirm-actions">
+        <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification -->
+  <div id="adminNotification" class="admin-notification">
+    <span id="adminNotificationMessage"></span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+  <script src="classroom_data.js"></script>
+  <script src="admin-classroom.js"></script>
+</body>
+</html>
